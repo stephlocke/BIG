@@ -11,32 +11,29 @@
 #' @rdname lists
 #'
 #' @examples
-#' list_to_li(c("a","b"))
-
-list_to_li <- function(list, class = NULL){
-  if (is.null(class)){
+#' list_to_li(c("a", "b"))
+list_to_li <- function(list, class = NULL) {
+  if (is.null(class)) {
     tagList(lapply(list, tags$li))
   } else {
     res <- lapply(list, tags$li)
     res <- lapply(res, function(x) tagAppendAttributes(x, class = class))
     tagList(res)
   }
-
 }
 
 #' @export
 #' @rdname lists
 #' @importFrom htmltools tags tagAppendAttributes tagList
 
-list_to_p <- function(list, class = NULL){
-  if (is.null(class)){
+list_to_p <- function(list, class = NULL) {
+  if (is.null(class)) {
     tagList(lapply(list, tags$p))
   } else {
     res <- lapply(list, tags$p)
     res <- lapply(res, function(x) tagAppendAttributes(x, class = class))
     tagList(res)
   }
-
 }
 
 #' @export
@@ -45,21 +42,25 @@ list_to_p <- function(list, class = NULL){
 #' @importFrom htmltools tags tagAppendAttributes tagList
 
 
-named_to_li <- function(list, class = NULL){
-  if(is.null(class)){
+named_to_li <- function(list, class = NULL) {
+  if (is.null(class)) {
     res <- mapply(
-      function(x, y){
+      function(x, y) {
         tags$li(HTML(glue("<b>{y}:</b> {x}")))
       },
-      list, names(list), SIMPLIFY = FALSE)
-    #res <- lapply(res, HTML)
+      list, names(list),
+      SIMPLIFY = FALSE
+    )
+    # res <- lapply(res, HTML)
     tagList(res)
   } else {
     res <- mapply(
-      function(x, y){
+      function(x, y) {
         tags$li(HTML(glue("<b>{y}:</b> {x}")))
       },
-      list, names(list), SIMPLIFY = FALSE)
+      list, names(list),
+      SIMPLIFY = FALSE
+    )
     res <- lapply(res, function(x) tagAppendAttributes(x, class = class))
     tagList(res)
   }
@@ -76,7 +77,6 @@ named_to_li <- function(list, class = NULL){
 #' @examples
 #' a <- shiny::tags$p(src = "plop", "pouet")
 #' tagRemoveAttributes(a, "src")
-
 tagRemoveAttributes <- function(tag, ...) {
   attrs <- as.character(list(...))
   for (i in seq_along(attrs)) {
@@ -116,7 +116,7 @@ undisplay <- function(tag) {
 #' @importFrom htmltools tagList
 #'
 #' @examples
-#'
+#' 
 #' ## Show
 #' a <- shiny::tags$p(src = "plop", "pouet")
 #' a_hidden <- undisplay(a)
@@ -125,9 +125,8 @@ undisplay <- function(tag) {
 #' b_show <- shiny::actionButton("go_filter", "go")
 #' display(b_show)
 #' # Keep other attributes
-#' b_show$attribs$style <- 'display: none; background: red'
+#' b_show$attribs$style <- "display: none; background: red"
 #' display(b_show)
-#'
 #' @export
 
 display <- function(tag) {
@@ -149,7 +148,6 @@ display <- function(tag) {
 #'
 #' @examples
 #' with_red_star("Enter your name here")
-#'
 #' @importFrom htmltools tags HTML
 #'
 with_red_star <- function(text) {
@@ -176,7 +174,6 @@ with_red_star <- function(text) {
 #'
 #' @examples
 #' rep_br(5)
-#'
 #' @importFrom htmltools HTML
 
 rep_br <- function(times = 1) {
@@ -193,8 +190,7 @@ rep_br <- function(times = 1) {
 #'
 #' @examples
 #' enurl("https://www.thinkr.fr", "ThinkR")
-
-enurl <- function(url, text){
+enurl <- function(url, text) {
   tags$a(href = url, text)
 }
 
@@ -207,18 +203,18 @@ enurl <- function(url, text){
 #' @param ... Contents for column
 #' @export
 #' @rdname columns
-col_12 <- function(...){
+col_12 <- function(...) {
   shiny::column(12, ...)
 }
 
 #' @export
 #' @rdname columns
-col_6 <- function(...){
+col_6 <- function(...) {
   shiny::column(6, ...)
 }
 
 #' @export
 #' @rdname columns
-col_4 <- function(...){
+col_4 <- function(...) {
   shiny::column(4, ...)
 }

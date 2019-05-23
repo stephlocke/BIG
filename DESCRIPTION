@@ -1,14 +1,25 @@
 Package: BIG
-Title: New riveting project!
+Title: A shiny app for BIG
 Version: 0.0.0.9000
-Authors@R: 
-    person(given = "Steph",
-           family = "Locke",
-           role = c("aut", "cre"),
-           email = "steph@itsalocke.com",
+Authors@R: person("Steph", "Locke", email = "steph@itsalocke.com", 
+           role = c("aut","cre"),
            comment = c(ORCID = "0000-0002-2387-3723"))
-Description: What the package does (one paragraph).
+Description: This package contains the shiny application BIG.
 License: MIT + file LICENSE
 Encoding: UTF-8
-Language: es
 LazyData: true
+Imports: 
+    shiny,
+    DT,
+    shinythemes,
+    shinyjs,
+    attempt,
+    glue,
+    htmltools,
+    golem
+Remotes: 
+    Thinkr-open/golem
+RoxygenNote: 6.1.1
+Suggests: 
+    shinytest,
+    testthat
